@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://kit.fontawesome.com/9b2dd287de.js"></script>
+  <title>MarkDone | Keep your teacher marking on track</title>
+  <link rel="stylesheet" href="css/main.min.css">
+</head>
+
+<body class="container">
+
+  <header id="logo">
+    <h1 id="logo"><i class="far fa-clock"></i> Marking Time</h1>
+    <h2 id="title">Hello</h2>
+    <ul>
+      <!-- <li><a href="#pageOne"><i class="fas fa-sync-alt fa-2x"></i></a></li> -->
+      <li><a>
+          <i id="changeSettings" class="fas fa-cog fa-2x"></i>
+        </a></li>
+    </ul>
+  </header>
+
+  <div id="pageOne">
+
+    <section id="week" class="inView">
+
+      <h1>My Week</h1>
+      <p id="wkNum">Week 1</p>
+      <h3>6h</h3>
+
+      <div class="weekView">
+        <table>
+
+          <tbody>
+            <tr id="dayTitles">
+              <th>Mon</th>
+              <th>Tue</th>
+              <th>Wed</th>
+              <th>Thu</th>
+              <th>Fri</th>
+              <th>Sat</th>
+              <th>Sun</th>
+            </tr>
+            <tr class="dailyProgress">
+              <td class="mon">
+                <div class="toDo"></div>
+                <div class="Done"></div>
+              </td>
+              <td>
+                <div></div>
+                <div></div>
+              </td>
+              <td>
+                <div></div>
+                <div></div>
+              </td>
+              <td>
+                <div></div>
+                <div></div>
+              </td>
+              <td>
+                <div></div>
+                <div></div>
+              </td>
+              <td>
+                <div></div>
+                <div></div>
+              </td>
+              <td>
+                <div></div>
+                <div></div>
+              </td>
+            </tr>
+            <tr class="enterMinutes">
+              <td><input type="number" name="minsToday" id="minsMon" placeholder="minutes"></td>
+              <td><input type="number" name="minsToday" id="minsTue" placeholder="minutes"></td>
+              <td><input type="number" name="minsToday" id="minsWed" placeholder="minutes"></td>
+              <td><input type="number" name="minsToday" id="minsThu" placeholder="minutes"></td>
+              <td><input type="number" name="minsToday" id="minsFri" placeholder="minutes"></td>
+              <td><input type="number" name="minsToday" id="minsSat" placeholder="minutes"></td>
+              <td><input type="number" name="minsToday" id="minsSun" placeholder="minutes"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+
+    <section id="block">
+
+
+      <h1>This Marking Block</h1>
+      <h3>30h</h3>
+      <div class="termView">
+        <a href="#">Click to view</a>
+      </div>
+    </section>
+
+    <section id="inspire">
+      <h1 id="dailyQuote">Daily inspirational quote</h1>
+    </section>
+  </div>
+
+
+
+
+  <div id="pageTwo">
+
+    <section id="settings">
+
+      <h1>Settings</h1>
+      <div class="allSettings">
+
+        <div class="titleSettings">
+          <label for="setTitle">
+            <h4>Title:</h4>
+          </label>
+          <input type="text" id="setTitle" placeholder="Your name or school?" />
+          <div class="tooltip">
+            <i class="far fa-question-circle"></i>
+            <span class="tooltiptext">This appears at the top of the screen and identifies which data you are
+              using.</span>
+          </div>
+        </div>
+
+        <div class="classInfo">
+          <h4>Class Information:
+            <div class="tooltip">
+              <i class="far fa-question-circle"></i>
+              <span class="tooltiptext">Enter each class you mark for, including the number of pupils in the class and
+                give each a unique colour.</span>
+            </div>
+          </h4>
+
+          <table class="classTable">
+            <tbody>
+              <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Pupils</th>
+                <th></th>
+              </tr>
+              <tr>
+                <td><input type="color" id="classColour" value=blue></td>
+                <td><input type="text" id="className" placeholder="e.g. 7B3"></td>
+                <td><input type="number" id="classNumber" placeholder="30?"></td>
+                <td>
+                  <button class="btn"><i class="far fa-trash-alt fa-2x"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
+          <button class="addClass btn btn-border"><i class="fas fa-plus-circle"></i> Add new class</button>
+        </div>
+
+
+        <div class="durationInfo">
+          <h4>Marking Block duration:</h4>
+          </h4>
+          <div>
+            <label for="begin">Start date:</label>
+            <input type="date" name="termStart" id="begin">
+            <label for="end">End date:</label>
+            <input type="date" name="termEnd" id="end">
+            <div class="tooltip">
+              <i class="far fa-question-circle"></i>
+              <span class="tooltiptext">We work from the Monday of the week begginning from the date you enter.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="markingDetails">
+          <h4>Marking Details
+            <div class="tooltip">
+              <i class="far fa-question-circle"></i>
+              <span class="tooltiptext">For each type of marking, enter the average time in minutes spent marking for
+                one pupil and the frequency
+                you
+                mark the whole class in the block duration given above.</span>
+            </div>
+          </h4>
+
+          <h5>Book Marking</h4>
+            <label for="bookTime">Time:</label>
+            <input type="number" name="bookTime" id="bookTime" value="10">
+            <label for="bookFreq">Frequency:</label>
+            <input type="number" name="bookFreq" id="bookFreq" value="2">
+
+            <h5>Assessment Marking</h4>
+              <label for="assessmentTime">Time:</label>
+              <input type="number" name="assessmentTime" id="assessmentTime" value="30">
+              <label for="assessmentFreq">Frequency:</label>
+              <input type="number" name="assessmentFreq" id="assessmentFreq" value="1">
+        </div>
+
+        <div class="markingBlocks">
+          <h4>Planned Marking Blocks
+            <div class="tooltip">
+              <i class="far fa-question-circle"></i>
+              <span class="tooltiptext">For each day, enter the number of minutes you plan to set aside for
+                marking. The default value is 30 minutes.</span>
+            </div>
+          </h4>
+
+          <table class="markWhen">
+            <tbody>
+              <tr>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+                <th>Sun</th>
+              </tr>
+              <tr class="dailyMark">
+                <td><input type="number" name="markToday" id="markMon" value="30"></td>
+                <td><input type="number" name="markToday" id="markMon" value="30"></td>
+                <td><input type="number" name="markToday" id="markMon" value="30"></td>
+                <td><input type="number" name="markToday" id="markMon" value="30"></td>
+                <td><input type="number" name="markToday" id="markMon" value="30"></td>
+                <td><input type="number" name="markToday" id="markMon" value="30"></td>
+                <td><input type="number" name="markToday" id="markMon" value="30"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="displayOptions">
+          <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+              <input type="checkbox" id="checkbox" />
+              <div class="slider round"></div>
+            </label>
+            <p>Switch to dark mode</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
