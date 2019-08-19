@@ -1,0 +1,458 @@
+:root {
+  --primary-colour: #302AE6;
+  --secondary-colour: #536390;
+  --font-colour: #424242;
+  --bg-colour: #fff;
+  --plinth: rgb(238, 238, 238);
+  --shadow: 1px 2px 4px rgb(180, 179, 179);
+  --heading-colour: #292922;
+  --doneBar: purple;
+  --todoBar: teal;
+}
+
+[data-theme="dark"] {
+  --primary-colour: #9A97F3;
+  --secondary-colour: #818cab;
+  --font-colour: #e1e1ff;
+  --bg-colour: #161625;
+  --plinth: #0e0e18;
+  --shadow: 1px 2px 4px #23233d;
+  --heading-colour: #818cab;
+  --doneBar: rgb(139, 37, 37);
+  --todoBar: rgb(63, 149, 63);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.btn-border {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-border i {
+  border: none;
+}
+
+.btn-border {
+  border: 2px solid var(--secondary-colour);
+  border-radius: 5px;
+}
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  padding-left: 0.3rem;
+  /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: #555;
+  color: #fff;
+  font-size: 0.6rem;
+  text-align: center;
+  padding: 5px 5px;
+  border-radius: 6px;
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  /* Fade in tooltip */
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.2;
+  background: var(--bg-colour);
+  color: var(--font-colour);
+}
+
+section {
+  padding: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2;
+  color: var(--heading-colour);
+}
+
+img {
+  width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  text-align: left;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  padding: 0 2rem;
+  background: var(--bg-colour);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 4px solid var(--secondary-colour);
+}
+
+header ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1rem;
+}
+
+header ul li {
+  padding: 0 1rem;
+}
+
+header ul a i {
+  text-decoration: none;
+  color: var(--font-colour);
+}
+
+header ul a i:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+#pageOne,
+#pageTwo {
+  position: relative;
+  top: 10vh;
+  left: 0;
+}
+
+#pageOne #week {
+  display: none;
+}
+
+#pageOne #week.inView {
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "t n p" "wk wk wk";
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-rows: auto minmax(50px, 300px);
+      grid-template-rows: auto minmax(50px, 300px);
+}
+
+#pageOne #week.inView h1,
+#pageOne #week.inView p,
+#pageOne #week.inView h3 {
+  border-bottom: 2px solid var(--secondary-colour);
+}
+
+#pageOne #week.inView h1 {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: t;
+}
+
+#pageOne #week.inView p#wkNum {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: n;
+  text-align: center;
+}
+
+#pageOne #week.inView h3 {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: p;
+  text-align: center;
+}
+
+#pageOne #week.inView .weekView {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: wk;
+}
+
+#pageOne #week.inView .weekView table {
+  margin-top: 0.4rem;
+  background: var(--plinth);
+  -webkit-box-shadow: var(--shadow);
+          box-shadow: var(--shadow);
+  width: 100%;
+}
+
+#pageOne #week.inView .weekView table th {
+  width: 50px;
+}
+
+#pageOne #week.inView .weekView table tbody tr.dailyProgress td {
+  height: 200px;
+}
+
+#pageOne #week.inView .weekView table tbody tr.dailyProgress td.mon {
+  background: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+#pageOne #week.inView .weekView table tbody tr.dailyProgress td.mon div.toDo {
+  height: 100px;
+  background: var(--doneBar);
+  border-top-left-radius: 5px;
+}
+
+#pageOne #week.inView .weekView table tbody tr.dailyProgress td.mon div.Done {
+  height: 10px;
+  background: var(--todoBar);
+  border-bottom-right-radius: 5px;
+}
+
+#pageOne #week.inView .weekView table tr.enterMinutes td {
+  text-align: center;
+}
+
+#pageOne #week.inView .weekView table tr.enterMinutes td input {
+  width: 100%;
+  height: 20px;
+  text-align: center;
+  font-size: 0.6rem;
+}
+
+#pageOne #block {
+  display: none;
+}
+
+#pageOne #block.inView {
+  display: block;
+}
+
+#pageOne #inspire {
+  display: none;
+}
+
+#pageOne #inspire.inView {
+  display: block;
+}
+
+#pageTwo #settings {
+  display: none;
+}
+
+#pageTwo #settings.inView {
+  display: block;
+}
+
+#pageTwo #settings.inView h1 {
+  border-bottom: 2px solid var(--secondary-colour);
+}
+
+#pageTwo #settings.inView .allSettings .titleSettings,
+#pageTwo #settings.inView .allSettings .classInfo,
+#pageTwo #settings.inView .allSettings .durationInfo,
+#pageTwo #settings.inView .allSettings .markingDetails,
+#pageTwo #settings.inView .allSettings .markingBlocks,
+#pageTwo #settings.inView .allSettings .displayOptions {
+  padding: 3rem 0 3rem;
+  border-bottom: 1px solid var(--secondary-colour);
+}
+
+#pageTwo #settings.inView .titleSettings input {
+  padding: 0.3rem;
+  width: 30%;
+}
+
+#pageTwo #settings.inView .classInfo table {
+  display: none;
+}
+
+#pageTwo #settings.inView .classInfo table td button {
+  padding: 0 1rem;
+  background: none;
+  border: none;
+}
+
+#pageTwo #settings.inView .classInfo table.show {
+  display: inline;
+}
+
+#pageTwo #settings.inView .classInfo table.show input {
+  border: none;
+  width: 6vw;
+  height: 30px;
+  text-align: center;
+}
+
+#pageTwo #settings.inView .classInfo table.show #classColour {
+  width: 30px;
+  height: 20px;
+}
+
+#pageTwo #settings.inView .durationInfo div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#pageTwo #settings.inView .durationInfo div label {
+  font-size: 0.8rem;
+  padding: 1rem 0.5rem 1rem 1rem;
+}
+
+#pageTwo #settings.inView .durationInfo div input {
+  padding: 0.6rem 0.3rem 0.3rem;
+  text-align: center;
+}
+
+#pageTwo #settings.inView .markingDetails h5,
+#pageTwo #settings.inView .markingBlocks h5 {
+  padding-top: 1rem;
+  padding-bottom: 0.4rem;
+}
+
+#pageTwo #settings.inView .markingDetails label,
+#pageTwo #settings.inView .markingBlocks label {
+  font-size: 0.8rem;
+  padding: 1rem 0.5rem 1rem 1rem;
+}
+
+#pageTwo #settings.inView .markingDetails input,
+#pageTwo #settings.inView .markingBlocks input {
+  width: 6vw;
+  height: 20px;
+  text-align: center;
+}
+
+#pageTwo #settings.inView .markingBlocks table {
+  padding-top: 1rem;
+}
+
+#pageTwo #settings.inView .displayOptions .theme-switch-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#pageTwo #settings.inView .displayOptions .theme-switch-wrapper p {
+  margin-left: 1rem;
+  font-size: 1rem;
+}
+
+#pageTwo #settings.inView .displayOptions .theme-switch-wrapper .theme-switch {
+  display: inline-block;
+  height: 24px;
+  position: relative;
+  width: 50px;
+}
+
+#pageTwo #settings.inView .displayOptions .theme-switch-wrapper .theme-switch input {
+  display: none;
+}
+
+#pageTwo #settings.inView .displayOptions .theme-switch-wrapper .theme-switch .slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+#pageTwo #settings.inView .displayOptions .theme-switch-wrapper .theme-switch .slider:before {
+  background-color: #fff;
+  bottom: 2px;
+  content: "";
+  height: 20px;
+  left: 2px;
+  position: absolute;
+  -webkit-transition: .4s;
+  transition: .4s;
+  width: 20px;
+}
+
+#pageTwo #settings.inView .displayOptions .theme-switch-wrapper .theme-switch input:checked + .slider {
+  background-color: #66bb6a;
+}
+
+#pageTwo #settings.inView .displayOptions .theme-switch-wrapper .theme-switch input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+          transform: translateX(26px);
+}
+
+#pageTwo #settings.inView .displayOptions .theme-switch-wrapper .theme-switch .slider.round {
+  border-radius: 34px;
+}
+
+#pageTwo #settings.inView .displayOptions .theme-switch-wrapper .theme-switch .slider.round:before {
+  border-radius: 50%;
+}
